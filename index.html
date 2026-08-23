@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gyan Ka Samandar</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+    body { background: #0f172a; color: #f8fafc; padding: 16px; display: flex; justify-content: center; }
+    .app-container { width: 100%; max-width: 480px; }
+    header { text-align: center; margin-bottom: 20px; }
+    header h1 { color: #38bdf8; font-size: 24px; }
+    header p { color: #94a3b8; font-size: 14px; }
+    
+    .card { background: #1e293b; border-radius: 14px; padding: 16px; margin-bottom: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2); }
+    .card h2 { font-size: 16px; color: #f59e0b; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .card p { font-size: 14px; line-height: 1.5; color: #e2e8f0; }
+    
+    .quote-box { background: #334155; padding: 12px; border-left: 4px solid #38bdf8; border-radius: 6px; margin: 8px 0; font-style: italic; }
+    .btn-group { display: flex; gap: 8px; margin-top: 12px; }
+    button { flex: 1; padding: 10px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .btn-share { background: #22c55e; color: white; }
+    .btn-save { background: #e11d48; color: white; }
+    .btn-copy { background: #6366f1; color: white; }
+    
+    .poster-img { width: 100%; border-radius: 10px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <header>
+    <h1>🌊 Gyan Ka Samandar</h1>
+    <p>रोज़ नया ज्ञान, विचार और AI प्रॉम्प्ट्स</p>
+  </header>
+
+  <!-- रोज़ की ज्ञान की बात -->
+  <div class="card">
+    <h2>📖 आज का सुविचार (Gyan)</h2>
+    <div class="quote-box" id="daily-quote">
+      "समय और समझ दोनों एक साथ बस किस्मत वालों को ही मिलते हैं, क्योंकि अक्सर समय पर समझ नहीं होती और समझ आने पर समय नहीं रहता।"
+    </div>
+    <div class="btn-group">
+      <button class="btn-share" onclick="shareWhatsApp()">📲 WhatsApp पर भेजें</button>
+      <button class="btn-save" onclick="alert('पसंदीदा पोस्ट सेव हो गया!')">❤️ सेव करें</button>
+    </div>
+  </div>
+
+  <!-- AI Reels Prompt -->
+  <div class="card">
+    <h2>🎬 Reels/Video AI Prompt</h2>
+    <p style="color: #cbd5e1; font-size: 13px;">AI Video/Image बनाने के लिए प्रॉम्प्ट:</p>
+    <div class="quote-box" id="ai-prompt">
+      A calm Indian monk sitting near the ocean at sunset, cinematic lighting, ultra-realistic 4k, hyper-detailed, golden hour.
+    </div>
+    <div class="btn-group">
+      <button class="btn-copy" onclick="copyPrompt()">📋 Prompt कॉपी करें</button>
+    </div>
+  </div>
+
+  <!-- HD Poster -->
+  <div class="card">
+    <h2>🖼️ आज का HD पोस्टर</h2>
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500" alt="HD Poster" class="poster-img">
+  </div>
+</div>
+
+<script>
+  function shareWhatsApp() {
+    const text = document.getElementById('daily-quote').innerText;
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text + '\n\n- Gyan Ka Samandar')}`, '_blank');
+  }
+
+  function copyPrompt() {
+    const text = document.getElementById('ai-prompt').innerText;
+    navigator.clipboard.writeText(text);
+    alert('AI Prompt कॉपी हो गया!');
+  }
+</script>
+
+</body>
+</html>
